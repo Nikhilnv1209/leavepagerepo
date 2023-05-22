@@ -2,17 +2,44 @@ import React, { useState } from 'react'
 import upload from "../assets/Leaveform/upload.png"
 import Upload from './Upload'
 import '../styles/Applyform.css'
+import success from '../assets/Leaveform/applysuccess.png'
+import { Link } from 'react-router-dom'
+
+const Submitscreen = () => {
+    return (
+        <div className='submit-container'>
+            <div className='success-screen'>
+                <img src={success} alt='applied successfully' className='success-image'/>
+                <p className='success-message'>Leave applied successfully</p>
+                <Link to={"/"} className='homebtn'>Go back to home</Link>
+            </div>
+        </div>
+    )
+}
 
 
 const ApplyForm = () => {
     const [filename, setFilename] = useState('');
     const [openModal, setOpenModal] = useState(false);
+    const [Submit, setSubmit] = useState(false);
+
+    const handlesubmit = (e) => {
+        e.preventDefault();
+        const [name,email,leave,startDate,endDate] = e.target.elements;
+        if(name.value === "" || email.value === "" || leave.value === "" || startDate.value === "" || endDate.value === "") {
+            alert("Please fill all the fields");
+            return;
+        }
+        if(Submit === true) return;
+        setSubmit(true); 
+    }
 
     const file = filename ? filename[0].name : "";
     return (
         <>
-            <form className="form-container">
+            <form className="form-container" onSubmit={handlesubmit}>
                 <h1 className="form-title">Apply form</h1>
+
                 <div className="form-input">
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" className="input" placeholder="Enter Name" />
@@ -47,6 +74,7 @@ const ApplyForm = () => {
                 </div>
             </form>
             {openModal && <Upload closeModal={setOpenModal} setFilename={setFilename} Filename={filename} />}
+            {Submit && <Submitscreen />}
         </>
     );
 };

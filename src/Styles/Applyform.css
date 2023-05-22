@@ -146,3 +146,52 @@ input[type="date"]:before {
   color: white;
   border-radius: 10px;
 }
+
+
+/* /////////////////////////////////////////////////////////////// */
+/* submit screen styles */
+
+.submit-container{
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0, 0, 0,.45);
+}
+
+.success-screen{
+  width: 26.875rem;
+  height: 21.06rem;
+  border-radius: 12.68px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.success-screen .success-image{
+  width: 95.77px;
+  height: 95.77px;
+}
+
+.success-screen .success-message{
+  font-size:1rem;
+  color: #0478FF;
+}
+
+.success-screen .homebtn{
+  padding: .5rem 3.3rem;
+  border-radius: 6.34px;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background-color: #0478FF;
+  color: white;
+  text-decoration: none;
+}

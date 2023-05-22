@@ -1,7 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Home from "./pages/Home"
-import Apply from "./pages/Apply"
+// import Apply from "./pages/Apply"
 import './App.css'
+import { lazy, Suspense } from "react"
+
+const Apply = lazy(() => import("./pages/Apply"))
 
 const routes = createBrowserRouter([
   {
@@ -10,7 +13,9 @@ const routes = createBrowserRouter([
   },
   {
     path: '/leaveapply',
-    element: <Apply/>,
+    element: <Suspense fallback={<div>Loading...</div>}>
+      <Apply />,
+    </Suspense>
   },
   {
     path: "*",
