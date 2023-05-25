@@ -14,7 +14,7 @@ const routes = createBrowserRouter([
   {
     path: '/leaveapply',
     element: <Suspense fallback={<div>Loading...</div>}>
-      <Apply />,
+      <Apply />
     </Suspense>
   },
   {

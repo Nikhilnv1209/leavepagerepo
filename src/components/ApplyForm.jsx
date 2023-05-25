@@ -4,12 +4,13 @@ import Upload from './Upload'
 import '../styles/Applyform.css'
 import success from '../assets/Leaveform/applysuccess.png'
 import { Link } from 'react-router-dom'
+import { pendingleaves } from '../constants/data.js'
 
 const Submitscreen = () => {
     return (
         <div className='submit-container'>
             <div className='success-screen'>
-                <img src={success} alt='applied successfully' className='success-image'/>
+                <img src={success} alt='applied successfully' className='success-image' />
                 <p className='success-message'>Leave applied successfully</p>
                 <Link to={"/"} className='homebtn'>Go back to home</Link>
             </div>
@@ -25,13 +26,13 @@ const ApplyForm = () => {
 
     const handlesubmit = (e) => {
         e.preventDefault();
-        const [name,email,leave,startDate,endDate] = e.target.elements;
-        if(name.value === "" || email.value === "" || leave.value === "" || startDate.value === "" || endDate.value === "") {
+        const [name, email, leave, startDate, endDate] = e.target.elements;
+        if (name.value === "" || email.value === "" || leave.value === "" || startDate.value === "" || endDate.value === "") {
             alert("Please fill all the fields");
             return;
         }
-        if(Submit === true) return;
-        setSubmit(true); 
+        if (Submit === true) return;
+        setSubmit(true);
     }
 
     const file = filename ? filename[0].name : "";
@@ -50,7 +51,12 @@ const ApplyForm = () => {
                 </div>
                 <div className="form-input">
                     <label htmlFor="leave">Leave Reason</label>
-                    <input type="text" className="textarea" />
+                    <select name="leave" className="select">
+                        <option value="" hidden>Select Leave Reason</option>
+                        {pendingleaves.map((leave, index) => (
+                            <option key={index} value={leave.id}>{leave.type}</option>
+                        ))}
+                    </select>
                 </div>
                 <div className="form-input">
                     <label htmlFor="startDate">Start Date</label>

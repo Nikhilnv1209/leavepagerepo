@@ -30,7 +30,7 @@
   color: #132666;
 }
 
-.input {
+.input, .select {
   width: 70%;
   border: 1.5px solid #dfe5ec;
   font-size: 0.875rem /* 14px */;
@@ -42,6 +42,10 @@
   font-size: 0.875rem;
   background-color: rgba(209, 209, 209, 0.2);
   height: 34px;
+}
+
+.select{
+  padding: 0rem .5rem;
 }
 
 .input::placeholder {
