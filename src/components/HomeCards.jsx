@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { pendingleaves } from "../constants/data.js";
 import totalapplied from "../assets/Home/totalapplied.png";
 import totalabsent from "../assets/Home/totalabsent.png";
 import "../Styles/Homecard.css";
 
 const HomeCards = () => {
+  const [userdata, setUserdata] = useState();
+
+  const getuser = async () => {
+    try {
+      await fetch("http://localhost:5000/user/one", {
+        method: "GET",
+        credentials: 'include',
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        res.json().then((data) => {
+          setUserdata(data);
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    console.log("useeffect");
+    getuser();
+    console.log(userdata);
+  }, []);
+
   return (
     <div className="grid-container">
       {pendingleaves.map((item) => (
