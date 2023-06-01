@@ -5,8 +5,6 @@ import "../styles/Applyform.css";
 import success from "../assets/Leaveform/applysuccess.png";
 import { Link } from "react-router-dom";
 import { pendingleaves } from "../constants/data.js";
-import { Toaster } from "react-hot-toast";
-import toast from "react-hot-toast";
 
 const Submitscreen = () => {
   return (
@@ -41,7 +39,7 @@ const ApplyForm = () => {
       startDate.value === "" ||
       endDate.value === ""
     ) {
-      toast.error("Please fill all the fields");
+      alert("Please fill all the fields");
       return;
     }
 
@@ -72,18 +70,6 @@ const ApplyForm = () => {
   const file = filename ? filename[0].name : "";
   return (
     <>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        toastOptions={{
-          style: {
-            fontSize: "15px",
-            width: "100%",
-            padding: "10px",
-            borderRadius: "10px",
-          },
-        }}
-      />
       <form className="form-container" onSubmit={handlesubmit}>
         <h1 className="form-title">Apply form</h1>
 
