@@ -6,6 +6,7 @@ import success from "../assets/Leaveform/applysuccess.png";
 import { Link } from "react-router-dom";
 import { pendingleaves } from "../constants/data.js";
 
+
 const Submitscreen = () => {
   return (
     <div className="submit-container">
@@ -28,6 +29,10 @@ const ApplyForm = () => {
   const [filename, setFilename] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [Submit, setSubmit] = useState(false);
+  const [document, setDocument] = useState("");
+
+
+ 
 
   const handlesubmit = async (e) => {
     e.preventDefault();
@@ -55,17 +60,18 @@ const ApplyForm = () => {
         leave: leave.value,
         startDate: startDate.value,
         endDate: endDate.value,
-        filename: filename[0].name,
+        document,
       }),
     });
 
     const res = await data.json();
-    console.log(res);
+    // console.log(res);
 
     // console.log(Submit)
     if (Submit === true) return;
     setSubmit(true);
   };
+
 
   const file = filename ? filename[0].name : "";
   return (
@@ -135,6 +141,7 @@ const ApplyForm = () => {
         <Upload
           closeModal={setOpenModal}
           setFilename={setFilename}
+          setDocument={setDocument}
           Filename={filename}
         />
       )}
