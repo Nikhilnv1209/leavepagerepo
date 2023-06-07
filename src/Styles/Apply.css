@@ -16,3 +16,21 @@
     height: 31.2rem;
   }
   
+  @media screen and (max-width:425px) {
+    .banner-image{
+      display: none;
+    }
+  }
+  @media screen and (max-width:768px) {
+    .banner-image{
+      width: 30%;
+      object-fit: contain;
+    }
+  }
+
+  @media screen and (min-width:768px) and (max-width:1024px) {
+    .banner-image{
+      width: 30%;
+      object-fit: contain;
+    }
+  }
